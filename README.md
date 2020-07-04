@@ -1,5 +1,3 @@
-# tgk_radio
-
 # Install 
 1. Install IceCast2 (https://icecast.org/download/)
 2. Edit icecast.xml:
