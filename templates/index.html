@@ -44,13 +44,14 @@
     <input id="jcp-volume" oninput="setVolume()" type="range" min="0" max="1" value="1" step="0.01"/>
 </div>
 <audio src="http://127.0.0.1:8005/stream" id="playerStream"></audio>
+<img id="cover" src="static\img\Cover.jpg" width="100px" height="100px"/>
 <div class="marquee">
     <span>
         <H1 id="song_name"><script src="{% static 'js/song_name.js' %}"></script></H1>
     </span>
 </div>{% block content %}
     {% csrf_token %}
-    {{ vat }}
+    {{  0  }}
 {% endblock %}
 <!--  -->
 <script>

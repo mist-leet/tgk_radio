@@ -13,10 +13,9 @@ function parse() {
             name = doc.getElementsByClassName("streamstats")[6].textContent;
             document.getElementById("song_name").innerHTML = name;
             // TODO: delete log
-            console.log("prev : " + prev_name);
-            console.log("name  : " + name);
+            //console.log("prev : " + prev_name);
+            //console.log("name  : " + name);
             if (prev_name !== name) {
-                //prev_name = name;
                 $.ajax({
                     url: "post_ajax_req",
                     type: "POST",
@@ -25,6 +24,7 @@ function parse() {
                     headers: {"X-CSRFToken": "{{ csrf_token }}"}, // for csrf token
                     success: function (res) {
                         // TODO: put in <img>
+                        document.getElementById("cover").src = res.url;
                         console.log(res.url);
                     },
 
