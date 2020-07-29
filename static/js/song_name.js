@@ -25,6 +25,11 @@ function parse() {
                     success: function (res) {
                         // TODO: put in <img>
                         document.getElementById("cover").src = res.url;
+                        document.getElementById("circle1").style.backgroundImage =
+                            "url(" + res.url + ")";
+                        document.getElementById("circle2").style.backgroundImage =
+                         "url(" + res.url + ")";
+
                         console.log(res.url);
                     },
 
