@@ -1,0 +1,36 @@
+{% load static %}
+  <link rel="stylesheet" type="text/css" href="/static/css/firstcssfile.css">   
+<div class="bl" style="padding-right:10px">
+  <button id="btnId"  class ="play"  onclick="SupBtn()"  alt="ButtnPlay"><img id="imgPl" width="100%" src="{% static "images/Play.png" %}"></button>
+  <input id="jcp-volume"  oninput="setVolume()" type="range" min="0" max="1" value="1" step="0.01" />
+</div>
+<audio src="http://127.0.0.1:8005/stream/" %} id="playerStream" " ></audio>
+<div class="marquee">
+    <span>
+        <H1 id="song_name"><script src="/static/js/song_name.js"></script></H1>
+    </span>
+</div>
+<!--  -->
+<script>
+  function setVolume() {
+   var mediaClip = document.getElementById("playerStream");
+   mediaClip.volume = document.getElementById("jcp-volume").value;
+
+}
+
+let bl=true;
+  function SupBtn(){
+    if(bl){
+      document.getElementById('playerStream').muted=false;
+      bl=false;
+      document.getElementById('imgPl').src="{% static "images/stopPng.png" %}";
+      document.getElementById('playerStream').play();
+    }else
+    {
+      vl=document.getElementById('playerStream').volume;
+      bl=true;
+      document.getElementById('imgPl').src="{% static "images/Play.png" %}";
+      document.getElementById('playerStream').muted=true;
+    }
+  }
+</script>
