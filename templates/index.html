@@ -34,46 +34,58 @@
         }
     });
 </script>
-<link rel="stylesheet" type="text/css" href="/static/css/player_main.css">
-<link rel="stylesheet" type="text/css" href="/static/css/running_line.css">
 
-<div class="bl" style="padding-right:10px">
-    <button id="btnId" class="play" onclick="SupBtn()" alt="ButtnPlay"><img id="imgPl" width="100%"
-                                                                            src="{% static "images/Play.png" %}">
-    </button>
-    <input id="jcp-volume" oninput="setVolume()" type="range" min="0" max="1" value="1" step="0.01"/>
+<!-- links and styles // start -->
+  <link rel="stylesheet" type="text/css" href="/static/css/player_main.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/disk.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/running_line.css">
+  <style> #circle1,#circle2{background-image:url("{% static "images/pika.jpg" %}")
+  </style>
+  <!--  links and styles // end -->
+
+<!-- block button play + waves // start -->
+<div class="radiowave" style="padding-right:10px">
+  <div class="bl">
+        <!-- button play/ stop // start -->
+         <button id="btnId"  class ="play"   alt="ButtnPlay">
+          <img id="imgPl" width="100%" src="{% static "images/Play.png" %}">
+        </button>
+         <!-- button play/ stop // end -->
+        <!-- waves // start -->
+        <span class="wave"></span>
+        <span class="wave"></span>
+        <span class="wave"></span>
+        <span class="wave"></span>
+        <!-- waves // end -->
+  </div>
 </div>
-<audio src="http://127.0.0.1:8005/stream" id="playerStream"></audio>
-<img id="cover" src="static\img\Cover.jpg" width="100px" height="100px"/>
+
+
+<!-- block button play + waves // end -->
+<!-- the volume slider // start -->
+<input id="jcp-volume"  type="range" min="0" max="1" value="1" step="0.01" />
+<!-- the volume slider // end -->
+<!-- hidden audio // start -->
+<audio csrc="http://127.0.0.1:8005/stream/" id="playerStream"></audio>
+<!-- hidden audio // end -->
+<!-- running line // start -->
 <div class="marquee">
     <span>
-        <H1 id="song_name"><script src="{% static 'js/song_name.js' %}"></script></H1>
+        <H1 id="song_name"></H1>
     </span>
-</div>{% block content %}
-    {% csrf_token %}
-    {{  0  }}
-{% endblock %}
-<!--  -->
-<script>
-    function setVolume() {
-        var mediaClip = document.getElementById("playerStream");
-        mediaClip.volume = document.getElementById("jcp-volume").value;
+</div>
+<!-- running line // end -->
 
-    }
+<img src="static\img\Cover.jpg" id="cover" width="100зч" height="100px">
 
-    let bl = true;
 
-    function SupBtn() {
-        if (bl) {
-            document.getElementById('playerStream').muted = false;
-            bl = false;
-            document.getElementById('imgPl').src = "{% static "images/stopPng.png" %}";
-            document.getElementById('playerStream').play();
-        } else {
-            vl = document.getElementById('playerStream').volume;
-            bl = true;
-            document.getElementById('imgPl').src = "{% static "images/Play.png" %}";
-            document.getElementById('playerStream').muted = true;
-        }
-    }
-</script>
+<!-- picture album - the disc // start -->
+
+<div  id="circle1"></div>
+<div id="circle2"></div>
+
+<!--  picture album - the disc // end -->
+<!-- js files // start -->
+  <script src="/static/js/player.js" type="text/javascript"></script>
+  <script src="/static/js/song_name.js"></script>
+<!-- js files // end -->
